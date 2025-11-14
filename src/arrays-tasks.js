@@ -422,8 +422,15 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers
+    .map((item, ind) => {
+      let result;
+      if (item % 2 !== 0) result = ind;
+      else result = null;
+      return result;
+    })
+    .filter((item) => Number.isInteger(item));
 }
 
 /**
@@ -436,8 +443,16 @@ function getIndicesOfOddNumbers(/* numbers */) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  const initial = arr.map((item) => item.toString(16).toUpperCase());
+  return initial.map((item) => {
+    let result;
+    if (item.length < 6) {
+      const add = '0'.repeat(6 - item.length);
+      result = `#${add}${item}`;
+    } else result = `#${item}`;
+    return result;
+  });
 }
 
 /**
@@ -454,8 +469,8 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  return arr.sort((a, b) => b - a).slice(0, n);
 }
 
 /**
