@@ -538,7 +538,7 @@ function propagateItemsByPositionIndex(arr) {
     result.push(...new Array(ind + 1).fill(elem));
     return elem;
   });
-  return result.flat(Infinity);
+  return result;
 }
 
 /**
@@ -571,8 +571,21 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const numericArr = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+
+  return arr.sort((a, b) => numericArr.indexOf(a) - numericArr.indexOf(b));
 }
 
 /**
@@ -594,8 +607,16 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const middleInd = Math.floor(arr.length / 2);
+  if (arr.length % 2 === 0) {
+    const head = arr.slice(0, middleInd);
+    const tail = arr.slice(middleInd);
+    return tail.concat(head);
+  }
+  const head = arr.slice(0, middleInd);
+  const tail = arr.slice(middleInd + 1);
+  return tail.concat(arr[middleInd], head);
 }
 
 module.exports = {
